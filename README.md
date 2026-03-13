@@ -1,24 +1,20 @@
-# ETF轮动策略
+# ETF Global Rotation Strategy Pro 🌏📈
 
-一个基于动量的ETF轮动量化策略，通过持有近期表现最佳的ETF来实现超额收益。
+基于 **双动量 (Dual Momentum)** 逻辑的全球大类资产轮动方案。
 
-## 策略概述
+## 策略亮点
+- **全球视野**：资产池涵盖 A股宽基、美股、日经、黄金及周期品。
+- **生存法则**：结合绝对动量过滤（半年线），在熊市自动切换至国债。
+- **风险对冲**：同类别资产持仓上限限制，防止单一阵地溃败。
+- **简单高效**：代码高度模块化，每月仅需运行一次。
 
-- **核心思路**：持有近25日涨幅最高的Top3 ETF
-- **仓位分配**：每只33.3%，等权配置
-- **调仓频率**：每周一调仓
-- **优化特性**：凯利仓位 + ATR止损 + 多因子排序 + 相关性过滤
+## 快速开始
+```bash
+pip install akshare pandas tabulate
+python daily_signal_full_optimized.py
+```
 
 ## 回测表现
-
-### 全面优化版（2021-2026，5年）
-
-| 指标 | 数值 |
-|------|------|
-| 累计收益率 | +215.0% |
-| 年化收益率 | 25.3% |
-| 夏普比率 | 2.09 |
-| 最大回撤 | -7.8% |
 
 ### 10年回测（2016-2026）
 
@@ -29,43 +25,29 @@
 | 夏普比率 | 1.82 |
 | 最大回撤 | -17.8% |
 
+### 5年回测（2021-2026）
+
+| 指标 | 数值 |
+|------|------|
+| 累计收益率 | +215.0% |
+| 年化收益率 | 25.3% |
+| 夏普比率 | 2.09 |
+| 最大回撤 | -7.8% |
+
+## 策略说明
+
+详细的策略说明请查看：[策略说明.md](./策略说明.md)
+
 ## 主要文件
 
-- `daily_signal_full_optimized.py` - 全面优化版每日信号脚本（推荐使用）
-- `etf_config.json` - ETF候选池配置
+- `daily_signal_full_optimized.py` - 全面优化版每日信号脚本
 - `backtest_full_optimized.py` - 全面优化版回测脚本
-
-## ETF候选池
-
-当前包含17只ETF：
-
-- **宽基**：沪深300ETF、中证500ETF
-- **红利**：上证红利ETF、中证红利ETF
-- **稳健**：5只自由现金流ETF
-- **成长**：创业板ETF、科创50ETF
-- **行业**：人工智能ETF、半导体ETF、医药ETF
-- **海外**：纳指ETF、恒生科技ETF
-- **商品**：黄金ETF
-
-## 使用方法
-
-```bash
-# 获取今日信号
-python daily_signal_full_optimized.py
-
-# 运行回测
-python backtest_full_optimized.py
-```
+- `etf_config.json` - ETF候选池配置
 
 ## 依赖
 
-- Python 3.8+
-- akshare
-- pandas
-- numpy
-
 ```bash
-pip install akshare pandas numpy
+pip install akshare pandas numpy matplotlib
 ```
 
 ## 风险提示
