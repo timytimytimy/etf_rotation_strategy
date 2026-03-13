@@ -1,125 +1,21 @@
 {
-  "etf_pool": [
-    {
-      "code": "510300",
-      "name": "沪深300ETF",
-      "category": "宽基",
-      "enabled": true
-    },
-    {
-      "code": "512510",
-      "name": "中证500ETF",
-      "category": "宽基",
-      "enabled": true
-    },
-    {
-      "code": "510880",
-      "name": "上证红利ETF",
-      "category": "红利",
-      "enabled": true
-    },
-    {
-      "code": "515080",
-      "name": "中证红利ETF",
-      "category": "红利",
-      "enabled": true
-    },
-    {
-      "code": "159915",
-      "name": "创业板ETF",
-      "category": "成长",
-      "enabled": true
-    },
-    {
-      "code": "588000",
-      "name": "科创50ETF",
-      "category": "成长",
-      "enabled": true
-    },
-    {
-      "code": "515070",
-      "name": "人工智能ETF",
-      "category": "行业",
-      "enabled": true
-    },
-    {
-      "code": "512480",
-      "name": "半导体ETF",
-      "category": "行业",
-      "enabled": true
-    },
-    {
-      "code": "512010",
-      "name": "医药ETF",
-      "category": "行业",
-      "enabled": true
-    },
-    {
-      "code": "513130",
-      "name": "恒生科技ETF",
-      "category": "海外",
-      "enabled": true
-    },
-    {
-      "code": "513100",
-      "name": "纳指ETF",
-      "category": "海外",
-      "enabled": true
-    },
-    {
-      "code": "518880",
-      "name": "黄金ETF",
-      "category": "商品",
-      "enabled": true
-    },
-    {
-      "code": "159201",
-      "name": "国证自由现金流ETF",
-      "category": "稳健",
-      "enabled": true
-    },
-    {
-      "code": "159222",
-      "name": "易方达自由现金流ETF",
-      "category": "稳健",
-      "enabled": true
-    },
-    {
-      "code": "159221",
-      "name": "嘉实自由现金流ETF",
-      "category": "稳健",
-      "enabled": true
-    },
-    {
-      "code": "159223",
-      "name": "永赢自由现金流ETF",
-      "category": "稳健",
-      "enabled": true
-    },
-    {
-      "code": "159276",
-      "name": "汇添富自由现金流ETF",
-      "category": "稳健",
-      "enabled": true
-    },
-    {
-      "code": "511360",
-      "name": "中短债ETF",
-      "category": "现金",
-      "enabled": false,
-      "note": "现金管理类仅供参考，不参与轮动"
-    },
-    {
-      "code": "511990",
-      "name": "货币ETF",
-      "category": "现金",
-      "enabled": false,
-      "note": "现金管理类仅供参考，不参与轮动"
+    "asset_pool": [
+        {"code": "510300", "name": "沪深300ETF", "type": "A股宽基"},
+        {"code": "510500", "name": "中证500ETF", "type": "A股宽基"},
+        {"code": "159915", "name": "创业板ETF", "type": "A股成长"},
+        {"code": "512890", "name": "红利低波ETF", "type": "A股价值"},
+        {"code": "513100", "name": "纳指ETF", "type": "海外科技"},
+        {"code": "513500", "name": "标普500ETF", "type": "海外均衡"},
+        {"code": "513520", "name": "日经225ETF", "type": "海外均衡"},
+        {"code": "518880", "name": "黄金ETF", "type": "避险商品"},
+        {"code": "512400", "name": "有色金属ETF", "type": "周期商品"},
+        {"code": "513060", "name": "恒生医疗ETF", "type": "超跌医药"}
+    ],
+    "defense_asset": {"code": "511260", "name": "十年国债ETF"},
+    "params": {
+        "momentum_window": 20,
+        "trend_window": 120,
+        "top_n": 3,
+        "max_per_category": 2
     }
-  ],
-  "settings": {
-    "lookback_days": 25,
-    "track_file": "track_record.json",
-    "exclude_categories": ["现金"]
-  }
 }
