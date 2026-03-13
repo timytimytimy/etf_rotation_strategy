@@ -1,11 +1,11 @@
 {
     "asset_pool": [
         {"code": "510300", "name": "沪深300ETF", "type": "A股宽基"},
-        {"code": "510500", "name": "中证500ETF", "type": "A股宽基"},
+        {"code": "588000", "name": "科创50ETF", "type": "A股锐度"},
         {"code": "159915", "name": "创业板ETF", "type": "A股成长"},
         {"code": "512890", "name": "红利低波ETF", "type": "A股价值"},
         {"code": "513100", "name": "纳指ETF", "type": "海外科技"},
-        {"code": "513500", "name": "标普500ETF", "type": "海外均衡"},
+        {"code": "513180", "name": "恒生科技ETF", "type": "海外锐度"},
         {"code": "513520", "name": "日经225ETF", "type": "海外均衡"},
         {"code": "518880", "name": "黄金ETF", "type": "避险商品"},
         {"code": "512400", "name": "有色金属ETF", "type": "周期商品"},
@@ -14,8 +14,8 @@
     "defense_asset": {"code": "511260", "name": "十年国债ETF"},
     "params": {
         "momentum_window": 20,
-        "trend_window": 120,
-        "top_n": 3,
-        "max_per_category": 2
+        "trend_window": 60,
+        "top_n": 2,
+        "max_per_category": 1
     }
 }
