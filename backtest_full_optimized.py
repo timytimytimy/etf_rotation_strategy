@@ -74,6 +74,9 @@ class SimpleBacktester:
                 })
             
             # 应用排序和类别限制
+            if not snapshot:
+                continue
+            
             df_snap = pd.DataFrame(snapshot).sort_values(by='ret', ascending=False)
             selected = []
             cat_count = {}

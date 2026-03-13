@@ -1,0 +1,42 @@
+{
+  "start_date": "2026-03-12",
+  "holdings": [
+    {
+      "code": "511880",
+      "buy_price": 133.523,
+      "buy_date": "2026-03-13",
+      "position": 0.2
+    }
+  ],
+  "signals": [
+    {
+      "date": "2026-03-12",
+      "holdings": [
+        {
+          "code": "511880",
+          "name": "银华日利(货币)"
+        }
+      ],
+      "changes": [
+        {
+          "action": "建仓",
+          "codes": [
+            "511880"
+          ],
+          "timing": "大盘跌破20日均线，减仓50%"
+        }
+      ],
+      "timing": "大盘跌破20日均线，减仓50%"
+    }
+  ],
+  "simulated_nav": 1.0000044937088077,
+  "daily_returns": [
+    {
+      "date": "2026-03-12",
+      "return": 4.493708807640218e-06
+    }
+  ],
+  "cash": 0.2,
+  "total_cost": 0.001,
+  "timing_state": "CAUTION"
+}

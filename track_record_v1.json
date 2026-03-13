@@ -1,0 +1,13 @@
+{
+  "start_date": "2026-03-12",
+  "holdings": [
+    {
+      "code": "510880",
+      "buy_date": "2026-03-12",
+      "buy_price": 4.957
+    }
+  ],
+  "signals": [],
+  "simulated_nav": 1.0280110036175982,
+  "daily_returns": []
+}
