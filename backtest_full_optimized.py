@@ -70,19 +70,23 @@ class AggressiveBacktester:
                 snapshot.append({'code': code, 'type': asset['type'], 'ret': ret, 'alive': is_alive})
             
             # 排序：收益率最高者优先
-            df_snap = pd.DataFrame(snapshot).sort_values(by='ret', ascending=False)
-            
-            # 多样化过滤 (max_per_category)
-            selected = []
-            cat_count = {}
-            for _, row in df_snap.iterrows():
-                if len(selected) >= self.params['top_n']: break
-                c_type = row['type']
-                if cat_count.get(c_type, 0) < self.params.get('max_per_category', 1):
-                    # 如果破位，则该席位换成国债
-                    final_code = row['code'] if row['alive'] else self.defense['code']
-                    selected.append(final_code)
-                    cat_count[c_type] = cat_count.get(c_type, 0) + 1
+            if not snapshot:
+                # 无可用资产，全部持有国债
+                selected = [self.defense['code']] * self.params['top_n']
+            else:
+                df_snap = pd.DataFrame(snapshot).sort_values(by='ret', ascending=False)
+                
+                # 多样化过滤 (max_per_category)
+                selected = []
+                cat_count = {}
+                for _, row in df_snap.iterrows():
+                    if len(selected) >= self.params['top_n']: break
+                    c_type = row['type']
+                    if cat_count.get(c_type, 0) < self.params.get('max_per_category', 1):
+                        # 如果破位，则该席位换成国债
+                        final_code = row['code'] if row['alive'] else self.defense['code']
+                        selected.append(final_code)
+                        cat_count[c_type] = cat_count.get(c_type, 0) + 1
             
             # --- 计算盈亏 ---
             period_range = self.data[self.benchmark_code].loc[curr_date:next_date].index[1:]
@@ -90,13 +94,25 @@ class AggressiveBacktester:
                 # 策略收益
                 day_rets = []
                 for code in selected:
-                    day_ret = self.data[code].loc[:d].pct_change().iloc[-1]
-                    day_rets.append(day_ret)
+                    if code not in self.data or d not in self.data[code].index:
+                        continue
+                    code_data = self.data[code].loc[:d]
+                    if len(code_data) < 2:
+                        continue
+                    day_ret = code_data.pct_change().iloc[-1]
+                    if pd.notna(day_ret):
+                        day_rets.append(day_ret)
                 
+                if not day_rets:
+                    continue
+                    
                 portfolio_val *= (1 + np.mean(day_rets))
                 # 基准收益
-                bench_day_ret = self.data[self.benchmark_code].loc[:d].pct_change().iloc[-1]
-                benchmark_val *= (1 + bench_day_ret)
+                bench_data = self.data[self.benchmark_code].loc[:d]
+                if len(bench_data) >= 2:
+                    bench_day_ret = bench_data.pct_change().iloc[-1]
+                    if pd.notna(bench_day_ret):
+                        benchmark_val *= (1 + bench_day_ret)
                 
                 equity_curve.append({
                     'date': d, 
