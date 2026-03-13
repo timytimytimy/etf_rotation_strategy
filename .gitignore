@@ -43,7 +43,7 @@ Thumbs.db
 
 # Large files (optional, can be included if needed)
 *.html
-*.png
+# *.png  # Allow PNG files for charts
 *.csv
 
 # Sensitive data
